@@ -20,6 +20,7 @@ export class TopNav extends React.Component<ITopNavProps, {}> {
         <input 
           onChange={(event) => this.props.updateSearchQuery(event)} 
           className='jp-search'
+          placeholder='Search'
         />
       </div>
       <div className='advanced-options'>

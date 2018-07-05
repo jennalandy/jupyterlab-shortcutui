@@ -157,7 +157,9 @@ export class ShortcutInput extends React.Component<IShortcutInputProps, IShortcu
       <div className='cell'>
         <input className='jp-input'
           value={this.state.value} 
-          onKeyDown={this.handleInput}>
+          onKeyDown={this.handleInput}
+          ref = {(input) => input && input.focus()}
+        >
         </input>
         {!this.state.isAvailable && 
           <div className='jp-input-warning'>
@@ -173,7 +175,8 @@ export class ShortcutInput extends React.Component<IShortcutInputProps, IShortcu
             this.setState({value:'', splits:[-1]})
             this.props.toggleInput()
             }
-          }>
+          }
+          >
           Submit
         </button>
       </div>
