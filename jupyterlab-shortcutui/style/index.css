@@ -62,13 +62,17 @@
 
 .jp-search {
     border-width: var(--jp-border-width);
-    border-color: var(--jp-border-color2);
+    border-color: var(--jp-layout-color2);
     border-radius: var(--jp-border-radius);
     height: 20px;
     width: 50%;
     font-size: var(--jp-ui-font-size1);
     padding: 3px;
     padding-left: 6px;
+    text-indent: 16px;
+    background-color: var(--jp-layout-color1);
+    background-image: var(--jp-icon-search);
+    background-repeat: no-repeat;
 }
 
 .jp-search:focus{
@@ -141,6 +145,7 @@
 
 .shortcut-cell-container {
     display: -webkit-box;
+    height: 25px;
 }
 
 .jp-shortcut-div p {
@@ -154,17 +159,40 @@
 }
 
 .jp-shortcut {    
-    background: var(--jp-layout-color2);
-    border-radius: var(--jp-border-radius);
-    border-width: var(--jp-border-width);
-    border-color: var(--jp-border-color2);
-    margin-right: 15px;
-    height: 25px;
+    margin: 4px 10px 0 4px;
+    height: 16px;
+    width: 16px;
+    border: none;
+    background-image: var(--jp-icon-close);
+    opacity: 0.5;
 }
 
-.jp-shortcut-right{
-    margin-right: 0px;
-    margin-left: 15px;
+
+.jp-shortcut-key {
+    border-width: var(--jp-border-width);
+    border-color: var(--jp-border-color1);
+    background: var(--jp-layout-color2);
+    padding: 4px 6px 4px 6px;
+    border-radius: var(--jp-border-radius);
+}
+
+.jp-shortcut-key-container {
+    font-family: var(--jp-code-font-family);
+    font-size: var(--jp-code-font-size);
+    line-height: var(--jp-code-line-height);
+    display: -webkit-box;
+}
+
+.or {
+    margin-right: 12px;
+    margin-top: 4px;
+}
+
+.comma {
+    height: 16px;
+    margin-top: 10px;
+    margin-right: 2px;
+    margin-left: 2px;
 }
 
 .jp-shortcut:hover {
@@ -174,15 +202,11 @@
 .jp-shortcut:active {
     border-width: var(--jp-border-width) + 0.05;
     border-color: var(--jp-border-color1);
-    background: var(--jp-layout-color3);
+    color: var(--jp-layout-color3);
 }
 
 .jp-shortcut:focus {
     outline: none;
-}
-
-.jp-shortcut::after {
-    content: '    ×';
 }
 
 /* Input area */
@@ -200,6 +224,14 @@
     height: 2.5%;
 }
 
+.jp-input-plus:hover {
+    color: var(--jp-brand-color0);
+}
+
+.jp-input-plus:focus {
+    color: var(--jp-brand-color0);
+}
+
 .jp-input {
     background: var(--jp-layout-color2);
     border-radius: var(--jp-border-radius);
@@ -209,7 +241,11 @@
     margin-left: 10px;
     height: 15px;
 }
-    
+
+.jp-input-unavailable {
+    border-color: var(--jp-error-color2);
+}
+
 .jp-input:focus {
     outline: none;
 }
@@ -218,8 +254,8 @@
     position: absolute;
     color: var(--jp-error-color2);
     font-size: var(--jp-ui-font-size0);
-    /* line-height: 14px; */
-    text-align: right;
+    text-align: left;
+    margin-left: 8px;
 }
 
 .jp-submit:focus {
@@ -242,8 +278,8 @@
 .row {
     display: table-row;
     border-bottom: solid;
-    border-bottom-color: var(--jp-layout-color3);
-    border-bottom-width: var(--jp-border-width);
+    border-bottom-color: var(--jp-layout-color2);
+    border-bottom-width: 2px;
 }
 
 .cell {

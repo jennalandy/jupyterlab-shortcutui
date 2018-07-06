@@ -11,7 +11,13 @@ export class ShortcutTitleItem extends React.Component<IShortcutTitleItemProps> 
     return (
       <div className='title-div'>
         {this.props.title}
-        <button className={'sort' + ((this.props.title).toLowerCase() === this.props.active ? ' selected-sort' : '')}
+        <button 
+          className={'sort' + (
+            (this.props.title).toLowerCase() === this.props.active 
+              ? ' selected-sort' 
+              : ''
+            )
+          }
           onClick={() => this.props.updateSort(this.props.title.toLowerCase())}
         >
           ⌃

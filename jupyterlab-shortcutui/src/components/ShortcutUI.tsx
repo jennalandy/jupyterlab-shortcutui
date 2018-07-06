@@ -153,7 +153,7 @@ export class ShortcutUI extends React.Component<IShortcutUIProps, IShortcutUISta
       .then(settings => Object.keys(settings.user).forEach(key => {
         this.props.settingRegistry.remove(this.props.shortcutPlugin, key);
       }))
-      .then(() => this._getShortcutList());
+      .then(() => this._getShortcutList())
   }
 
   /** Set new shortcut for command, refresh state */
@@ -357,7 +357,9 @@ export class ShortcutUI extends React.Component<IShortcutUIProps, IShortcutUISta
 
   /** Set the current list sort order */
   updateSort = (value: string) : void => {
-    this.setState({currentSort: value}, this.sortShortcuts)
+    if(value !== this.state.currentSort) {
+      this.setState({currentSort: value}, this.sortShortcuts)
+    }
   }
 
   /** Sort shortcut list using current sort property  */
@@ -370,7 +372,13 @@ export class ShortcutUI extends React.Component<IShortcutUIProps, IShortcutUISta
     shortcuts.sort((a, b) => {
       let compareA = a[filterCritera]
       let compareB = b[filterCritera]
-      return (compareA < compareB) ? -1 : (compareA > compareB) ? 1 : 0;
+      if(compareA < compareB) {
+        return -1
+      } else if(compareA > compareB) {
+        return 1
+      } else {
+        return (a['label'] < b['label']) ? -1 : (a['label'] > b['label']) ? 1 : 0
+      }
     })
     this.setState({filteredShortcutList: shortcuts})
   }
@@ -387,6 +395,7 @@ export class ShortcutUI extends React.Component<IShortcutUIProps, IShortcutUISta
           resetShortcuts={this.resetShortcuts}
           openAdvanced={this.openAdvanced}
           toggleSelectors={this.toggleSelectors}
+          showSelectors={this.state.showSelectors}
         />
         <ShortcutList 
           shortcuts={this.state.filteredShortcutList} 

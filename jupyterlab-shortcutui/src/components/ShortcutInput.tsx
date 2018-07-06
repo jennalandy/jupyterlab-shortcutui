@@ -52,7 +52,20 @@ export class ShortcutInput extends React.Component<IShortcutInputProps, IShortcu
   /** Parse user input for chained shortcuts */
   parseChaining = (event: any, splits: number[], value: string, userInput: string) : string => {
     event.preventDefault()
-    let wordKeys = ['Tab', 'Shift', 'Ctrl', 'Alt', 'Accel', 'Enter', 'ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft', 'Escape']
+    let wordKeys = 
+    [
+      'Tab', 
+      'Shift', 
+      'Ctrl',
+      'Alt',
+      'Accel', 
+      'Enter', 
+      'ArrowUp', 
+      'ArrowDown', 
+      'ArrowRight', 
+      'ArrowLeft', 
+      'Escape'
+    ]
     if (event.key === 'Backspace') {
       userInput = ''
       value = ''
@@ -154,8 +167,11 @@ export class ShortcutInput extends React.Component<IShortcutInputProps, IShortcu
 
   render() {
     return (
-      <div className='cell'>
-        <input className='jp-input'
+      <div className='jp-inbox-box'>
+        <input className={this.state.isAvailable 
+            ? 'jp-input' 
+            : 'jp-input jp-input-unavailable'
+          }
           value={this.state.value} 
           onKeyDown={this.handleInput}
           ref = {(input) => input && input.focus()}
@@ -172,10 +188,14 @@ export class ShortcutInput extends React.Component<IShortcutInputProps, IShortcu
             this.props.handleUpdate(this.props.shortcut, 
               this.keysFromValue(this.state.userInput, this.state.splits)
             ) 
-            this.setState({value:'', splits:[-1]})
+            this.setState(
+              {
+                value:'', 
+                splits:[-1]
+              }
+            )
             this.props.toggleInput()
-            }
-          }
+          }}
           >
           Submit
         </button>

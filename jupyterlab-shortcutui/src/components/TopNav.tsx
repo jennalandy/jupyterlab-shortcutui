@@ -6,6 +6,7 @@ export interface ITopNavProps {
   updateSearchQuery: Function;
   openAdvanced: Function;
   toggleSelectors: Function;
+  showSelectors: boolean;
 }
 
 /** React component for top navigation */
@@ -28,7 +29,7 @@ export class TopNav extends React.Component<ITopNavProps, {}> {
           Advanced Editor
         </a>
         <a className='jp-link' onClick={() => this.props.toggleSelectors()}>
-          Toggle Selectors
+          {this.props.showSelectors ? 'Hide Selectors' : 'Show Selectors'}
         </a>
       </div>
     </div>
