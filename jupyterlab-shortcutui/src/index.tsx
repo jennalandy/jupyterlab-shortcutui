@@ -43,7 +43,7 @@ export class ShortcutObject {
     this.numberOfShortcuts = 0
   }
 }
-
+ 
 const plugin: JupyterLabPlugin<void> = {
   id: '@jupyterlab/jupyterlab-shortcutui:plugin',
   requires: [ISettingRegistry, ICommandPalette],
