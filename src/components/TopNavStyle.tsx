@@ -5,6 +5,7 @@ import {
 export const TopStyle = style (
   {
     display: 'block',
+    minWidth: '1000px',
   }
 )
 
@@ -12,13 +13,10 @@ export const TopNavStyle = style (
   {
     display: 'flex',
     fontSize: 'var(--jp-ui-font-size2)',
-    position: 'fixed',
     backgroundColor: 'var(--jp-layout-color0)',
-    width: '96%',
     zIndex: 1,
     paddingTop: '30px',
     paddingBottom: '60px',
-    minWidth: '1000px'
   }
 )
 
@@ -124,12 +122,8 @@ export const HeaderRowStyle = style(
   {
     fontWeight: 'bold', //'var(--jp-content-heading-font-weight)',
     fontSize: 'var(--jp-ui-font-size2)',
-    position: 'fixed',
     backgroundColor: 'var(--jp-layout-color0)',
-    width: '94%',
     zIndex: 1,
     display: 'table',
-    marginTop: '85px',
-    minWidth: '1000px'
   }
 )

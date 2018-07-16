@@ -4,9 +4,15 @@ import {
 
 export const ShortcutListStyle = style (
   {
-    marginTop: '135px',
     width: '100%',
     display: 'table',
     borderCollapse: 'collapse',
+  }
+)
+
+export  const ShortcutListContainerStyle =  style (
+  {
+    height: '400px',
+    overflowY: 'scroll'
   }
 )
