@@ -8,12 +8,11 @@
   font-size: var(--jp-ui-font-size1);
   font-family: var(--jp-ui-font-family);
   color: var(--jp-content-font-color1);
-  min-width: 1000px;
   overflow: hidden;
 }
 
 .jp-shortcutui::before {
-  content: '';
+  content: ' ';
   display: block;
   height: var(--jp-toolbar-micro-height);
   width: 100%;

@@ -2,11 +2,11 @@ import {
   ShortcutItem
 } from './ShortcutItem'
 
-import * as React from 'react';
+import * as React from 'react'
 
 import {
   ShortcutListStyle,
-  ShortcutListContainerStyle
+  MakeShortcutListContainerStyle
 } from './ShortcutListStyle'
 
 /** Props for ShortcutList component */
@@ -18,14 +18,15 @@ export interface IShortcutListProps {
   showSelectors: boolean,
   keyBindingsUsed: Object,
   sortConflict: Function,
-  clearConflicts: Function
+  clearConflicts: Function,
+  height: number
 }
 
 /** React component for list of shortcuts */
 export class ShortcutList extends React.Component<IShortcutListProps, {}> {
   render() {
     return (
-      <div className = {ShortcutListContainerStyle}>
+      <div className = {MakeShortcutListContainerStyle(this.props.height)}>
         <div className={ShortcutListStyle}>
           {Object(this.props.shortcuts).map(shortcut => 
             <ShortcutItem key={shortcut.commandName + "_" + shortcut.selector} 

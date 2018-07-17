@@ -21,8 +21,8 @@ export const CellTextStyle = style (
 export const ShortcutCellStyle = style (
   {
     display: 'flex',
-    minWidth: '100px',
     flexWrap: 'wrap',
+    margin: '3px 0'
   }
 )
 

@@ -5,7 +5,8 @@ import {
 export const TopStyle = style (
   {
     display: 'block',
-    minWidth: '1000px',
+    height: 178, 
+    position: 'relative'
   }
 )
 
@@ -16,7 +17,12 @@ export const TopNavStyle = style (
     backgroundColor: 'var(--jp-layout-color0)',
     zIndex: 1,
     paddingTop: '30px',
-    paddingBottom: '60px',
+  }
+)
+
+export const TopNavStyleSmall = style (
+  {
+    // paddingBottom: '42px'
   }
 )
 
@@ -81,6 +87,12 @@ export const SearchStyle = style (
   }
 )
 
+export const AdvancedOptionsContainerStyle = style (
+  {
+    display: 'contents'
+  }
+)
+
 export const AdvancedOptionsStyle = style (
   {
     display: 'block',
@@ -125,5 +137,7 @@ export const HeaderRowStyle = style(
     backgroundColor: 'var(--jp-layout-color0)',
     zIndex: 1,
     display: 'table',
+    position: 'absolute',
+    top:128,
   }
 )

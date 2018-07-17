@@ -22,7 +22,13 @@ import {
   ShortcutObject
 } from '../index'
 
-import * as React from 'react';
+
+import {
+  style
+} from 'typestyle'
+
+import * as React from 'react'
+import ReactResizeDetector from 'react-resize-detector'
 
 const enum MatchType { Label, Category, Split, Default }
 
@@ -42,7 +48,9 @@ export interface IShortcutUIState {
   searchQuery: string;
   showSelectors: boolean;
   currentSort: string;
-  keyBindingsUsed: Object
+  keyBindingsUsed: Object;
+  height: number;
+  width: number;
 }
 
 /** Top level React component for widget */
@@ -58,7 +66,9 @@ export class ShortcutUI extends React.Component<IShortcutUIProps, IShortcutUISta
     searchQuery: '',
     showSelectors: false,
     currentSort: 'category',
-    keyBindingsUsed: undefined
+    keyBindingsUsed: undefined,
+    height: 0,
+    width: 0
   }
 
   /** Fetch shortcut list on mount */
@@ -411,12 +421,19 @@ export class ShortcutUI extends React.Component<IShortcutUIProps, IShortcutUISta
     this.setState({filteredShortcutList: shortcutList})
   }
 
+  onResize = (width, height) => {
+    this.setState({
+      height: height,
+      width: width
+    })
+  }
+
   render() {
     if (!this.state.shortcutsFetched) {
       return null
     }
     return (
-      <div className = 'jp-shortcutui' id = 'jp-shortcutui'>
+      <div className = {ShortcutUIStyle} id = 'jp-shortcutui'>
         <TopNav 
           updateSearchQuery={this.updateSearchQuery} 
           resetShortcuts={this.resetShortcuts}
@@ -425,6 +442,7 @@ export class ShortcutUI extends React.Component<IShortcutUIProps, IShortcutUISta
           showSelectors={this.state.showSelectors}
           updateSort={this.updateSort}
           currentSort={this.state.currentSort}
+          width={this.state.width}
         />
         <ShortcutList 
           shortcuts={this.state.filteredShortcutList} 
@@ -435,8 +453,18 @@ export class ShortcutUI extends React.Component<IShortcutUIProps, IShortcutUISta
           keyBindingsUsed={this.state.keyBindingsUsed}
           sortConflict={this.sortConflict}
           clearConflicts={this.clearConflicts}
+          height={this.state.height}
         />
+        <ReactResizeDetector handleHeight handleWidth onResize={this.onResize}/>
       </div>
     )
   }
 }
+
+export const ShortcutUIStyle = style (
+  {
+    height:'100%',
+    width:'100%',
+    minWidth:'621px'
+  }
+)

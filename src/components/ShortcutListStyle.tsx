@@ -10,9 +10,14 @@ export const ShortcutListStyle = style (
   }
 )
 
-export  const ShortcutListContainerStyle =  style (
-  {
-    height: '500px',
-    overflowY: 'scroll'
-  }
-)
+export function MakeShortcutListContainerStyle(height)
+{
+  let ShortcutListContainerStyle =  style (
+    {
+      //178 is the overall height of top nav
+      height: height - 178,
+      overflowY: 'scroll'
+    }
+  )
+  return ShortcutListContainerStyle
+}

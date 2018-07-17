@@ -19,10 +19,6 @@ import {
   ShortcutUI
 } from './components/ShortcutUI'
 
-// import {
-//   ResizeMessage
-// } from '@phosphor/widgets'
-
 import * as React from 'react';
 
 import '../style/index.css';
