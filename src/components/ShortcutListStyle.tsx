@@ -12,7 +12,7 @@ export const ShortcutListStyle = style (
 
 export  const ShortcutListContainerStyle =  style (
   {
-    height: '400px',
+    height: '500px',
     overflowY: 'scroll'
   }
 )
