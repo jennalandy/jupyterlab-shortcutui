@@ -130,6 +130,15 @@ export const AdvancedOptionsLinkRightStyle = style (
   }
 )
 
+export const TitleCellStyle = style (
+  {
+    padding: '6px 12px',
+    display: 'table-cell',
+    width: '20%',
+    verticalAlign: 'middle'
+  }
+)
+
 export const HeaderRowStyle = style(
   {
     fontWeight: 'bold', //'var(--jp-content-heading-font-weight)',
@@ -139,5 +148,7 @@ export const HeaderRowStyle = style(
     display: 'table',
     position: 'absolute',
     top:128,
+    boxSizing:'border-box',
+    padding: '10px 15px 10px 0'
   }
 )
