@@ -74,10 +74,24 @@ export const SubmitNonFunctionalStyle = style({
 
 export const SubmitConflictStyle = style({
   background: 'var(--jp-error-color1)',
-  backgroundImage: 'var(--jp-icon-error-white )',
+  backgroundImage: 'var(--jp-icon-error-white)',
   backgroundRepeat: 'no-repeat',
   backgroundSize: '20px',
   backgroundPositionX: '2px',
   backgroundPositionY: '2px',
   border: 'none'
 });
+
+
+export const CancelStyle = style({
+  backgroundImage: 'var(--jp-icon-close-white)',
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: '25px',
+  backgroundPositionY: '2px',
+  width: '26px',
+  height: '29px',
+  borderRadius: '0px',
+  background: 'var(--jp-layout-color4)',
+  border: 'none',
+  outline: 'none'
+})

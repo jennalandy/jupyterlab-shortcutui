@@ -13,7 +13,8 @@ import {
   InputBoxStyle,
   SubmitNonFunctionalStyle,
   SubmitConflictStyle,
-  SubmitStyle
+  SubmitStyle,
+  CancelStyle
 } from '../componentStyle/ShortcutInputStyle';
 
 export interface IShortcutInputProps {
@@ -28,7 +29,6 @@ export interface IShortcutInputProps {
   clearConflicts: Function;
   displayInput: boolean;
   newOrReplace: string;
-  placeholder: string;
 }
 
 export interface IShortcutInputState {
@@ -50,7 +50,7 @@ export class ShortcutInput extends React.Component<
   }
 
   state = {
-    value: this.props.placeholder,
+    value: '',
     userInput: '',
     isAvailable: true,
     isFunctional: false,
@@ -80,8 +80,15 @@ export class ShortcutInput extends React.Component<
     let keys = this.state.keys
     keys.push(this.state.currentChain)
     const shortcut = this.props.shortcut
+    const shortcutId = this.props.shortcutId
+
+    console.log('toggling')
     this.props.toggleInput();
-    await this.props.deleteShortcut(this.props.shortcut, this.props.shortcutId);
+
+    console.log('deleting')
+    await this.props.deleteShortcut(shortcut, shortcutId);
+
+    console.log('updating')
     this.props.handleUpdate(
       shortcut,
       keys
@@ -321,6 +328,7 @@ export class ShortcutInput extends React.Component<
 
   render() {
     let inputClassName = InputStyle;
+    console.log(this.props.shortcutId)
     if (!this.state.isAvailable) {
       inputClassName = classes(inputClassName, InputUnavailableStyle);
     }
@@ -362,6 +370,9 @@ export class ShortcutInput extends React.Component<
               this.handleReplace();
             }
           }}
+        />
+        <button 
+          className={CancelStyle}
         />
         {!this.state.isAvailable &&
           <button

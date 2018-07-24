@@ -140,39 +140,38 @@ export class ShortcutItem extends React.Component<
                     }
                   }}
                 >
-                  {this.props.shortcut.keys[key].map((keyBinding: string, index: number) => (
-                    !((index === 0 && this.state.displayReplaceInputLeft) || 
-                      (index === 1 && this.state.displayReplaceInputRight)) ? 
-                      <div className={ShortcutKeysContainerStyle} key={index}>
-                        <div className={ShortcutKeysStyle} id={'shortcut-keys'}>
-                          {this.toSymbols(keyBinding)}
-                        </div>
-                        {index + 1 < this.props.shortcut.keys[key].length ? (
-                          <div className={CommaStyle}>,</div>
-                        ) : null}
+                  {!((index === 0 && this.state.displayReplaceInputLeft) || 
+                  (index === 1 && this.state.displayReplaceInputRight))
+                  ? this.props.shortcut.keys[key].map((keyBinding: string, index: number) => ( 
+                        <div className={ShortcutKeysContainerStyle} key={index}>
+                          <div className={ShortcutKeysStyle} id={'shortcut-keys'}>
+                            {this.toSymbols(keyBinding)}
+                          </div>
+                          {index + 1 < this.props.shortcut.keys[key].length ? (
+                            <div className={CommaStyle}>,</div>
+                          ) : null}
                       </div>
-                    : <ShortcutInput
-                        handleUpdate={this.props.handleUpdate}
-                        deleteShortcut={this.props.deleteShortcut}
-                        toggleInput={index === 0 
-                          ? this.toggleInputReplaceLeft 
-                          : this.toggleInputReplaceRight
-                        }
-                        shortcut={this.props.shortcut}
-                        shortcutId={key}
-                        toSymbols={this.toSymbols}
-                        keyBindingsUsed={this.props.keyBindingsUsed}
-                        sortConflict={this.props.sortConflict}
-                        clearConflicts={this.props.clearConflicts}
-                        displayInput={index === 0
-                          ? this.state.displayReplaceInputLeft
-                          : this.state.displayReplaceInputRight
-                        }
-                        newOrReplace={'replace'}
-                        placeholder={this.toSymbols(keyBinding)}
-                      />
-                    )
-                  )}
+                    ))
+                  : <ShortcutInput
+                      handleUpdate={this.props.handleUpdate}
+                      deleteShortcut={this.props.deleteShortcut}
+                      toggleInput={index === 0 
+                        ? this.toggleInputReplaceLeft 
+                        : this.toggleInputReplaceRight
+                      }
+                      shortcut={this.props.shortcut}
+                      shortcutId={key+''}
+                      toSymbols={this.toSymbols}
+                      keyBindingsUsed={this.props.keyBindingsUsed}
+                      sortConflict={this.props.sortConflict}
+                      clearConflicts={this.props.clearConflicts}
+                      displayInput={index === 0
+                        ? this.state.displayReplaceInputLeft
+                        : this.state.displayReplaceInputRight
+                      }
+                      newOrReplace={'replace'}
+                    />
+                  }
                   {index === 0 && (
                     <div className={OrStyle}>or</div>
                   )}
@@ -215,7 +214,6 @@ export class ShortcutItem extends React.Component<
                   clearConflicts={this.props.clearConflicts}
                   displayInput={this.state.displayNewInput}
                   newOrReplace={'new'}
-                  placeholder={''}
                 />
               )}
             </div>

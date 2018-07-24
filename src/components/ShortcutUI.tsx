@@ -336,7 +336,7 @@ export class ShortcutUI extends React.Component<
   handleUpdate = async (shortcutObject: ShortcutObject, keys: string[]) => {
     if (keys[0] !== '') {
       let commandId: string = shortcutObject.id;
-      if (shortcutObject.numberOfShortcuts === 1) {
+      if (shortcutObject.numberOfShortcuts >= 1) {
         commandId = commandId + '-2';
       } else {
         Object.keys(shortcutObject.keys).forEach(key => {
@@ -381,11 +381,18 @@ export class ShortcutUI extends React.Component<
       }
     );
     this._getShortcutList();
+    console.log('done')
   };
 
   /** Reset a specific shortcut to its default settings */
   resetShortcut = async (shortcutObject: ShortcutObject) => {
     if (Object.keys(shortcutObject.keys).length > 1) {
+      if (Object.keys(shortcutObject.keys).length > 2) {
+        await this.props.settingRegistry.remove(
+          this.props.shortcutPlugin,
+          Object.keys(shortcutObject.keys)[2]
+        );
+      }
       await this.props.settingRegistry.remove(
         this.props.shortcutPlugin,
         Object.keys(shortcutObject.keys)[1]
