@@ -172,7 +172,6 @@ export class ShortcutItem extends React.Component<
                           : this.state.displayReplaceInputRight
                         }
                         newOrReplace={'replace'}
-                        placeholder={''}
                       />
                   }
                   {index === 0 && (

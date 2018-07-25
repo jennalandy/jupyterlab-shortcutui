@@ -53,7 +53,7 @@ export class ShortcutInput extends React.Component<
     value: '',
     userInput: '',
     isAvailable: true,
-    isFunctional: false,
+    isFunctional: true,
     takenByObject: new TakenByObject(),
     keys: new Array<string>(),
     currentChain: ''
@@ -82,7 +82,6 @@ export class ShortcutInput extends React.Component<
     let keys = this.state.keys
     keys.push(this.state.currentChain)
     const shortcut = this.props.shortcut
-    const shortcutId = this.props.shortcutId
 
     console.log('toggling')
     this.props.toggleInput();
