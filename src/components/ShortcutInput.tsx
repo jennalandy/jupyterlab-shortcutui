@@ -13,7 +13,8 @@ import {
   InputBoxStyle,
   SubmitNonFunctionalStyle,
   SubmitConflictStyle,
-  SubmitStyle
+  SubmitStyle,
+  CancelStyle
 } from '../componentStyle/ShortcutInputStyle';
 
 export interface IShortcutInputProps {
@@ -50,7 +51,7 @@ export class ShortcutInput extends React.Component<
   }
 
   state = {
-    value: this.props.placeholder,
+    value: '',
     userInput: '',
     isAvailable: true,
     isFunctional: false,
@@ -367,6 +368,9 @@ export class ShortcutInput extends React.Component<
               this.handleReplace();
             }
           }}
+        />
+        <button 
+          className={CancelStyle}
         />
         {!this.state.isAvailable &&
           <button

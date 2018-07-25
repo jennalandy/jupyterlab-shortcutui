@@ -81,3 +81,15 @@ export const SubmitConflictStyle = style({
   backgroundPositionY: '2px',
   border: 'none'
 });
+
+export const CancelStyle = style({
+  background: 'var(--jp-layout-color4)',
+  borderRadius: '0px',
+  fontFamily: 'var(--jp-ui-font-family)',
+  display: 'block',
+  height: '29px',
+  backgroundImage: 'var( --jp-icon-cancel-white )',
+  backgroundRepeat: 'no-repeat',
+  backgroundPositionY: '2px',
+  width: '26px',
+})
